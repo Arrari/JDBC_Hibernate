@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class Util {
     private static Connection connection;
-    private static final String URL = "jdbc:mysql://localhost:3306/my_DB_test";
+    private static final String URL = "jdbc:mysql://localhost:3306/my_db_test";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
@@ -31,7 +31,8 @@ public class Util {
                 settings.put(Environment.PASS, PASSWORD);
                 settings.put(Environment.SHOW_SQL, "true");
 
-                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+                settings.put(Environment.HBM2DDL_AUTO, "update");
+                settings.put(Environment.FORMAT_SQL, "true");
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);

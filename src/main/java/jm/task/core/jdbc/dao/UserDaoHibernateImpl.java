@@ -69,6 +69,8 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         try (Session session = Util.buildSessionFactory().openSession()) {
             session.delete(session.load(User.class, id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -76,7 +78,10 @@ public class UserDaoHibernateImpl implements UserDao {
     public List<User> getAllUsers() {
         try (Session session = Util.buildSessionFactory().openSession()) {
             return session.createQuery("from User", User.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     @Override
